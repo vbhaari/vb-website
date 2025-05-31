@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Hello <span id="name1">Welcome</span></p>
+   
+        <input type="text" id="input1">
+        <input type="text" id="input2">
+        <button  id="button1">Button</button>
+    <p id="para2"> Hello Bhaari </p>
+
+    <a href="all.html">All Data</a>
+    
+<script>
+    let input1, input2;
+    
+    
+
+    const button = document.getElementById('button1');
+
+    button.addEventListener("click", async (event)=>{
+
+        input1 = document.getElementById('input1').value;
+        input2 = document.getElementById('input2').value;
+        
+        const data = {input1, input2};
+        const options = {
+            method: "POST", 
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+            
+        };
+        
+        const response = await fetch("/", options);
+        
+        const json = await response.json();
+        console.log(json);
+       
+        
+    });
+
+    
+
+    // async function getData() {
+    //     const response = await fetch('Material.csv');
+    //     const data = await response.text();
+    //     const table = data.split('\n').slice(1,5);
+
+    //     table.forEach(rows => {
+    //         const row = rows.split(',');
+    //         const code = row[0];
+    //         const material = row[1];
+    //         const name = row[3];
+    //         const rowdata =[];
+
+    //         rowdata.push(code);
+    //         console.log(rowdata);
+
+    //         const para = document.getElementById('para2');
+    //         para.innerHTML+= code + '<br>';
+    //     });
+        
+    // }
+
+</script>
+</body>
+</html>

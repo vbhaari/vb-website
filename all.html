@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root1">
+        
+    </div>
+
+    <script>
+        
+        async function getData() {
+            const response = await fetch('/api');
+            const data = await response.json();
+            console.log(data); 
+
+            for (item of data){
+                const root =document.createElement('div');
+                const input1 = document.createElement('div');
+                const input2 = document.createElement('div');
+
+                input1.textContent = `input1: ${item.input1}`;
+                input2.textContent = `input2: ${item.input2}`;
+
+                root.append(input1, input2);
+                document.body.append(root);
+
+            }
+        }
+        document.getElementById("root1").textContent=getData();
+    </script>
+</body>
+</html>
